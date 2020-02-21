@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Source+Sans+Pro:400,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #dddddd;
+
+    display: flex;
+    flex-direction: column;
+
+    background-image: url('https://source.unsplash.com/collection/1129245');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+    
+.background {
+    /* background: linear-gradient(rgba(87, 80, 182, 0.514), rgba(165, 158, 255, 0.514)) no-repeat; */
+       
+    background-color: #eeeeee;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    z-index: -2;
+}
+
+header, main {
+    margin: 0 auto;
+    padding: 0 50px;
+
+}
+
+footer {
+    color: #fcfcfc;
+    font-size: 14px;
+    text-align: center;
+
+    background-color: #111111;
+
+    margin-top: auto;
+    padding: 20px;
+}
+
+footer span {
+    color: rgb(134, 42, 134);
+}
+
+/* HEADER */
+header {
+    padding: 30px 50px;
+    background-color: rgb(16, 13, 85);
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+header div h3 {
+    font-weight: bold;
+}
+
+header i.material-icons {
+    position: absolute;
+    right: 50px;
+
+    font-size: 48px;
+    color: black;
+
+    cursor: pointer;
+}
+
+/* MAIN */
+.temp .degrees {
+    text-align: center;
+    margin: 80px auto 140px auto;
+
+    width: 150px;
+    height: 140px;
+
+    position: relative;
+    color: black;
+}
+
+.temp .degrees::before {
+    content: '';
+    position: absolute;
+
+    background-color: #f7f7f7;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;  
+
+    border-radius: 18px;
+}
+
+.temp .degrees h1 {
+    font-size: 500%;
+    font-weight: normal;
+}
+
+.card {
+    background-color: rgba(16, 13, 85, 0.9);
+
+    border-radius: 16px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+
+    padding: 20px;
+    margin-bottom: 80px;
+}
+
+/* TODAY */
+.today .card {
+    padding: 30px;
+}
+
+.card h2 {
+    font-size: 18px;
+}
+
+.today .card .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    
+    margin-top: 20px;
+}
+
+.card .content .next-hours {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 45px;
+}
+
+.content .next-hours .hour {
+    display: flex;
+    flex-direction: column;
+    
+
+    background-color: #07007D;
+    
+    width: 80px;
+    height: 200px;
+    padding: 10px;
+    text-align: center;
+
+    border: 0.5px solid #969696;
+    border-radius: 50px;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.next-hours .hour h3 {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.next-hours .hour img {
+    background-color: #A49EFF;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    justify-self: center;
+    align-self: center;
+
+    margin: 30px auto;
+    padding: 10px;
+}
+
+.next-hours .hour h2 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.card .content .details {
+    justify-self: right;
+    font-size: 24px;
+}
+
+.content .details div:first-child {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.content .details div {
+    display: flex;
+    align-items: center;
+}
+
+.details div img {
+    width: 60px;
+    height: 60px;
+
+    margin-right: 20px;
+    padding: 5px;
+
+    border-radius: 5px;
+
+    background-color: #A49EFF;
+}
+
+/* NEXT DAYS */
+.forward-days .card .days {
+    margin-top: 20px;
+
+    display: grid;
+    grid-template-columns: repeat(6, 130px);
+    gap: 30px;
+
+    justify-content: center;
+}
+
+.card .days .day {
+    background-color: #07007D;
+    border: 0.5px solid #969696;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+
+    padding: 5px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.days .day h3 {
+    font-size: 18px;
+}
+
+.days .day div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 60px;
+}
+
+.day div img {
+    background-color: #A49EFF;
+    
+    width: 35px;
+    height: 35px;
+
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.days .day h2 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+/* PORTRAIT */
+@media (max-width: 1313px) {
+    .card .content .next-hours {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .forward-days .card .days {
+        grid-template-columns: repeat(5, 130px);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 1160px) {
+    .card .content .next-hours {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .forward-days .card .days {
+        grid-template-columns: repeat(4, 130px);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .card .content .next-hours {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .forward-days .card .days {
+        grid-template-columns: repeat(3, 130px);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 840px) {
+    .background {
+        width: 90%;
+    }
+}
+
+@media (max-width: 748px) {
+    .content .details div {
+        display: flex;
+        flex-direction: column;
+    }
+    .details div img {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 659px) {
+    .today .card .content {
+        display: flex;
+        flex-flow: column-reverse;
+    }
+    .card .content .next-hours {
+        justify-items: center;
+    }
+    .card .content .details {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin-bottom: 30px;
+    }
+    .content .details div {
+        flex-direction: row;
+    }
+    .details div img {
+        margin-right: 10px;
+    }
+    .content .details div:first-child {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .forward-days .card .days {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .card .content .details {
+        padding: 0;
+    }
+    .forward-days .card .days {
+        grid-template-columns: repeat(2, 130px);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 560px) {
+    .card .content .next-hours {
+        gap: 10px;
+    }
+}
