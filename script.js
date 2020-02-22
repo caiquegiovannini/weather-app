@@ -6,7 +6,6 @@ function displayGreetings() {
     const hour = new Date().getHours()
     const greetings = ['Bom dia!', 'Boa tarde!', 'Boa noite!']
     let greeting = document.querySelector('header div h3')
-    greeting.innerHTML = 'Olá!'
 
     if (hour >= 6 && hour < 12) {
         greeting.innerHTML = greetings[0]
@@ -19,7 +18,7 @@ function displayGreetings() {
 }
 
 async function getLocation(cityName) {
-    const results = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${appId}&q=${cityName}`)
+    const results = await fetch(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${appId}&q=${cityName}`)
     return results.json()
 }
 
@@ -34,7 +33,7 @@ async function getCurrentWeather() {
         }
     }
 
-    results = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${appId}&language=pt-BR`)
+    results = await fetch(`https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${appId}&language=pt-BR`)
     return results.json()
 }
 
