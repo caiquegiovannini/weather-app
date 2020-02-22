@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    border: none;
 
     box-sizing: border-box;
 }
@@ -29,7 +30,6 @@ body {
     width: 80%;
     margin: 0 auto;
     position: relative;
-    z-index: -2;
 }
 
 header, main {
@@ -66,48 +66,72 @@ header {
 
 header div h3 {
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
-header i.material-icons {
+header .searchForm {
     position: absolute;
     right: 50px;
+}
 
-    font-size: 48px;
-    color: black;
+header .searchForm input {
+    font-size: 16px;
+    padding: 6px 12px;
+
+    border-radius: 4px;
+}
+
+header .searchForm button {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 12px;
+    
+    border-radius: 4px;
+
+    background-color: #A49EFF;
 
     cursor: pointer;
 }
 
 /* MAIN */
+main .temp {
+    display: flex;
+
+    margin: 80px auto 140px auto;
+    height: 140px;
+    width: 100%;
+
+    opacity: 0;
+
+    transition: opacity 500ms;
+}
+
+main .temp.displayed {
+    opacity: 1;
+}
+
+main .temp img {
+    width: 140px;
+    margin-right: 15px;
+}
+
 .temp .degrees {
     text-align: center;
-    margin: 80px auto 140px auto;
-
-    width: 150px;
-    height: 140px;
 
     position: relative;
     color: black;
 }
 
-.temp .degrees::before {
-    content: '';
-    position: absolute;
-
-    background-color: #f7f7f7;
-
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1;  
-
-    border-radius: 18px;
-}
-
 .temp .degrees h1 {
     font-size: 500%;
     font-weight: normal;
+}
+
+.temp .degrees span {
+    position: absolute;
+    font-size: 250%;
+    top: 10px;
+    right: -10px;
 }
 
 .card {
