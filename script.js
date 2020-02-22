@@ -6,6 +6,7 @@ function displayGreetings() {
     const hour = new Date().getHours()
     const greetings = ['Bom dia!', 'Boa tarde!', 'Boa noite!']
     let greeting = document.querySelector('header div h3')
+    greeting.innerHTML = 'Olá!'
 
     if (hour >= 6 && hour < 12) {
         greeting.innerHTML = greetings[0]
