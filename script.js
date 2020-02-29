@@ -63,7 +63,7 @@ document.querySelector('.searchForm').addEventListener('submit', async e => {
 
     const weather = await getCurrentWeather()
 
-    document.querySelector('main .temp').classList.add('displayed')
+    document.querySelector('main .now').classList.add('displayed')
 
     data = {
         ...data,

@@ -101,13 +101,15 @@ main .now {
     height: 140px;
     width: 100%;
 
-    opacity: 1;
+    opacity: 0;
+    visibility: hidden;
 
     transition: opacity 500ms;
 }
 
 main .now.displayed {
     opacity: 1;
+    visibility: visible;
 }
 
 main .now .temp {
