@@ -94,44 +94,97 @@ header .searchForm button {
 }
 
 /* MAIN */
-main .temp {
+main .now {
     display: flex;
 
     margin: 80px auto 140px auto;
     height: 140px;
     width: 100%;
 
-    opacity: 0;
+    opacity: 1;
 
     transition: opacity 500ms;
 }
 
-main .temp.displayed {
+main .now.displayed {
     opacity: 1;
 }
 
-main .temp img {
+main .now .temp {
+    display: flex;
+
+    margin-right: 140px;
+}
+
+main .now img {
     width: 140px;
     margin-right: 15px;
 }
 
-.temp .degrees {
+.now .degrees {
     text-align: center;
 
     position: relative;
     color: black;
 }
 
-.temp .degrees h1 {
+.now .degrees h1 {
     font-size: 500%;
     font-weight: normal;
 }
 
-.temp .degrees span {
+.now .degrees span {
     position: absolute;
     font-size: 250%;
     top: 10px;
     right: -10px;
+}
+
+.now .degrees p {
+    text-align: left;
+}
+
+/* DETAILS */
+main .now .details {
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    
+    align-items: center;
+}
+
+.now .details div {
+    display: flex;
+}
+
+.details div img {
+    width: 45px;
+    height: 45px;
+
+    margin-right: 10px;
+    padding: 5px;
+
+    border-radius: 5px;
+
+    background-color: #A49EFF;
+}
+
+.details div .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.details div h4 {
+    color: #999999;
+    font-size: 14px;
+
+    margin-bottom: 5px;
+}
+
+.details div p {
+    color: #111;
 }
 
 .card {
@@ -154,10 +207,6 @@ main .temp img {
 }
 
 .today .card .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    
     margin-top: 20px;
 }
 
@@ -205,33 +254,6 @@ main .temp img {
 .next-hours .hour h2 {
     font-size: 24px;
     font-weight: normal;
-}
-
-.card .content .details {
-    justify-self: right;
-    font-size: 24px;
-}
-
-.content .details div:first-child {
-    margin-top: 20px;
-    margin-bottom: 40px;
-}
-
-.content .details div {
-    display: flex;
-    align-items: center;
-}
-
-.details div img {
-    width: 60px;
-    height: 60px;
-
-    margin-right: 20px;
-    padding: 5px;
-
-    border-radius: 5px;
-
-    background-color: #A49EFF;
 }
 
 /* NEXT DAYS */

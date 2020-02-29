@@ -1,4 +1,5 @@
 const appId = 'i7bbgAh4cKqpOJG4oyDzFG0r6vqCACE0'
+const apiUrl = 'https://dataservice.accuweather.com'
 const city = document.querySelector('.searchForm input')
 let data = {}
 
@@ -18,7 +19,8 @@ function displayGreetings() {
 }
 
 async function getLocation(cityName) {
-    const results = await fetch(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${appId}&q=${cityName}`)
+    const results = await fetch(`${apiUrl}/locations/v1/cities/search?apikey=${appId}&q=${cityName}`)
+
     return results.json()
 }
 
@@ -33,7 +35,7 @@ async function getCurrentWeather() {
         }
     }
 
-    results = await fetch(`https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${appId}&language=pt-BR`)
+    results = await fetch(`${apiUrl}/currentconditions/v1/${locationKey}?apikey=${appId}&language=pt-BR&details=true`)
     return results.json()
 }
 
@@ -44,10 +46,14 @@ function displayWeatherImage(iconNumber, weatherText) {
     mainIcon.alt = `${weatherText} icon`
 }
 
-function displayCurrentWeather(degrees, location) {
+function displayCurrentWeather(degrees, location, wind, humidity, visibility, uvIndex) {
     const { city, admAreaId } = location
-    document.querySelector('.temp .degrees h1').innerHTML = degrees
+    document.querySelector('.temp .degrees h1').innerHTML = `${degrees}º`
     document.querySelector('.temp .degrees p').innerHTML = `${city}, ${admAreaId}`
+    document.querySelector('#wind .info p').innerHTML = `${wind}km/h`
+    document.querySelector('#humidity .info p').innerHTML = `${humidity}%`
+    document.querySelector('#visibility .info p').innerHTML = `${visibility}km`
+    document.querySelector('#uvIndex .info p').innerHTML = `${uvIndex}`
 }
 
 displayGreetings()
@@ -55,24 +61,29 @@ displayGreetings()
 document.querySelector('.searchForm').addEventListener('submit', async e => {
     e.preventDefault()
 
-    document.querySelector('main .temp').classList.add('displayed')
-
     const weather = await getCurrentWeather()
+
+    document.querySelector('main .temp').classList.add('displayed')
 
     data = {
         ...data,
         condition: weather[0].WeatherText.toLowerCase(),
         iconNumber: weather[0].WeatherIcon,
         degrees: Math.round(weather[0].Temperature.Metric.Value),
+        wind: Math.round(weather[0].Wind.Speed.Metric.Value),
+        humidity: weather[0].RelativeHumidity,
+        visibility: Math.round(weather[0].Visibility.Metric.Value),
+        uvIndex: `${weather[0].UVIndex} ${weather[0].UVIndexText}`
     }
 
     displayWeatherImage(data.iconNumber, data.condition)
 
-    displayCurrentWeather(data.degrees, data.location)
+    displayCurrentWeather(data.degrees, data.location, data.wind, data.humidity, data.visibility, data.uvIndex)
 
     document.querySelector('header div p').innerHTML = `O tempo lá fora está ${data.condition}`
 
 
 
     console.log(data)
+    console.log(weather)
 })
