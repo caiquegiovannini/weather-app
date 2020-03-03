@@ -69,6 +69,7 @@ function displayCurrentWeather(data) {
 
 function displayHoursForecast(data) {
     const hours = document.querySelector('.today .card .content .next-hours')
+    hours.innerHTML = ''
     for (let i = 0; i < 7; i++) {
         const hourDiv = document.createElement('div')
         hourDiv.classList.add('hour')
