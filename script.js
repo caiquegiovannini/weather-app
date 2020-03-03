@@ -39,6 +39,14 @@ async function getCurrentWeather() {
     return results.json()
 }
 
+async function getTwelveHoursForecast() {
+    let results = await getLocation(city.value)
+    const locationKey = results[0].Key
+
+    results = await fetch(`${apiUrl}/forecasts/v1/hourly/12hour/${locationKey}?apikey=${appId}&language=pt-BR&metric=true`)
+    return results.json()
+}
+
 function displayWeatherImage(iconNumber, weatherText) {
     const mainIcon = document.querySelector('main .temp img')
 
@@ -46,24 +54,58 @@ function displayWeatherImage(iconNumber, weatherText) {
     mainIcon.alt = `${weatherText} icon`
 }
 
-function displayCurrentWeather(degrees, location, wind, humidity, visibility, uvIndex) {
-    const { city, admAreaId } = location
-    document.querySelector('.temp .degrees h1').innerHTML = `${degrees}º`
+function displayCurrentWeather(data) {
+    const { city, admAreaId } = data.location
+    
+    displayWeatherImage(data.iconNumber, data.condition)
+    
+    document.querySelector('.temp .degrees h1').innerHTML = `${data.degrees}º`
     document.querySelector('.temp .degrees p').innerHTML = `${city}, ${admAreaId}`
-    document.querySelector('#wind .info p').innerHTML = `${wind}km/h`
-    document.querySelector('#humidity .info p').innerHTML = `${humidity}%`
-    document.querySelector('#visibility .info p').innerHTML = `${visibility}km`
-    document.querySelector('#uvIndex .info p').innerHTML = `${uvIndex}`
+    document.querySelector('#wind .info p').innerHTML = `${data.wind}km/h`
+    document.querySelector('#humidity .info p').innerHTML = `${data.humidity}%`
+    document.querySelector('#visibility .info p').innerHTML = `${data.visibility}km`
+    document.querySelector('#uvIndex .info p').innerHTML = `${data.uvIndex}`
+}
+
+function displayHoursForecast(data) {
+    const hours = document.querySelector('.today .card .content .next-hours')
+    for (let i = 0; i < 7; i++) {
+        const hourDiv = document.createElement('div')
+        hourDiv.classList.add('hour')
+
+        const date = new Date(data.nextHours[i].DateTime)
+        const hour = document.createElement('h3')
+        hour.innerHTML = `${date.getHours()}`
+
+        const icon = new Image()
+        
+        icon.src = `images/icons/${data.nextHours[i].WeatherIcon}.png`
+        icon.alt = `${data.nextHours[i].IconPhrase} icon`
+
+        const desc = document.createElement('p')
+        desc.innerHTML = `${data.nextHours[i].IconPhrase}`
+
+        const temp = document.createElement('h2')
+        temp.innerHTML = `${Math.round(data.nextHours[i].Temperature.Value)}º`
+
+        hourDiv.appendChild(hour)
+        hourDiv.appendChild(icon)
+        hourDiv.appendChild(desc)
+        hourDiv.appendChild(temp)
+        hours.appendChild(hourDiv)
+    }
 }
 
 displayGreetings()
 
 document.querySelector('.searchForm').addEventListener('submit', async e => {
     e.preventDefault()
-
+    
     const weather = await getCurrentWeather()
-
+    const nextHours = await getTwelveHoursForecast()
+    
     document.querySelector('main .now').classList.add('displayed')
+
 
     data = {
         ...data,
@@ -73,17 +115,16 @@ document.querySelector('.searchForm').addEventListener('submit', async e => {
         wind: Math.round(weather[0].Wind.Speed.Metric.Value),
         humidity: weather[0].RelativeHumidity,
         visibility: Math.round(weather[0].Visibility.Metric.Value),
-        uvIndex: `${weather[0].UVIndex} ${weather[0].UVIndexText}`
+        uvIndex: `${weather[0].UVIndex} ${weather[0].UVIndexText}`,
+        nextHours
     }
 
-    displayWeatherImage(data.iconNumber, data.condition)
-
-    displayCurrentWeather(data.degrees, data.location, data.wind, data.humidity, data.visibility, data.uvIndex)
+    displayCurrentWeather(data)
+    displayHoursForecast(data)
 
     document.querySelector('header div p').innerHTML = `O tempo lá fora está ${data.condition}`
 
 
 
-    console.log(data)
-    console.log(weather)
+    console.log(nextHours)
 })

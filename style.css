@@ -207,23 +207,24 @@ main .now .details {
 }
 
 .today .card .content {
-    margin-top: 20px;
+    margin: 20px auto 0 auto;
 }
 
 .card .content .next-hours {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 45px;
+    display: flex;
 }
 
 .content .next-hours .hour {
+    margin-right: 60px;
+    position: relative;
+
     display: flex;
     flex-direction: column;
     
 
     background-color: #07007D;
     
-    width: 80px;
+    min-width: 80px;
     height: 200px;
     padding: 10px;
     text-align: center;
@@ -241,19 +242,28 @@ main .now .details {
 
 .next-hours .hour img {
     background-color: #A49EFF;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     justify-self: center;
     align-self: center;
 
-    margin: 30px auto;
-    padding: 10px;
+    margin: 15px auto 5px auto;
+    box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.25);
+    border: 2px solid #969696;
+}
+
+.next-hours .hour p {
+    font-size: 16px;
+    text-align: center;
 }
 
 .next-hours .hour h2 {
     font-size: 24px;
     font-weight: normal;
+    position: absolute;
+    bottom: 10px;
+    align-self: center;
 }
 
 /* NEXT DAYS */
@@ -311,7 +321,7 @@ main .now .details {
 }
 
 /* PORTRAIT */
-@media (max-width: 380px) {
+@media (max-width: 500px) {
     body {
         background: none;
     }
@@ -320,6 +330,7 @@ main .now .details {
     }
     header {
         flex-direction: column;
+        align-items: unset;
     }
     header div {
     margin-top: 50px;
@@ -335,5 +346,15 @@ main .now .details {
     }
     .now .temp img {
         margin-right: 0;
+    }
+
+    .card .content .next-hours {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 40px;
+    }
+
+    .forward-days .card .days {
+        display: none;
     }
 }
