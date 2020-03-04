@@ -216,11 +216,10 @@ main .now .details {
 
 .content .next-hours .hour {
     margin-right: 60px;
-    position: relative;
 
     display: flex;
     flex-direction: column;
-    
+    justify-content: space-around;
 
     background-color: #07007D;
     
@@ -242,13 +241,12 @@ main .now .details {
 
 .next-hours .hour img {
     background-color: #A49EFF;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     justify-self: center;
     align-self: center;
 
-    margin: 15px auto 5px auto;
     box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.25);
     border: 2px solid #969696;
 }
@@ -261,8 +259,6 @@ main .now .details {
 .next-hours .hour h2 {
     font-size: 24px;
     font-weight: normal;
-    position: absolute;
-    bottom: 10px;
     align-self: center;
 }
 

@@ -108,7 +108,7 @@ function displayHoursForecast(data) {
 
         hourDiv.appendChild(hour)
         hourDiv.appendChild(icon)
-        hourDiv.appendChild(desc)
+        // hourDiv.appendChild(desc)
         hourDiv.appendChild(temp)
         hours.appendChild(hourDiv)
     }
