@@ -251,8 +251,6 @@ main .now .details {
     margin: 15px auto 5px auto;
     box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.25);
     border: 2px solid #969696;
-
-    object-fit: unset;
 }
 
 .next-hours .hour p {
@@ -271,15 +269,13 @@ main .now .details {
 /* NEXT DAYS */
 .forward-days .card .days {
     margin-top: 20px;
-
-    display: grid;
-    grid-template-columns: repeat(6, 130px);
-    gap: 30px;
-
-    justify-content: center;
+    
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .card .days .day {
+    width: 180px;
     background-color: #07007D;
     border: 0.5px solid #969696;
     box-sizing: border-box;
@@ -290,6 +286,7 @@ main .now .details {
 
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -298,22 +295,23 @@ main .now .details {
 }
 
 .days .day div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    text-align: center;
+    margin: 20px 0;
     width: 100%;
-    height: 60px;
+}
+
+.day div p {
+    font-size: 16px;
 }
 
 .day div img {
     background-color: #A49EFF;
+    border: 2px solid #969696;
+    box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.25);
     
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
 
-    margin-left: 10px;
-    padding: 5px;
     border-radius: 50%;
 }
 
@@ -357,6 +355,11 @@ main .now .details {
     }
 
     .forward-days .card .days {
-        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+    .forward-days .days .day {
+        width: 80%;
+        margin-bottom: 30px;
     }
 }
