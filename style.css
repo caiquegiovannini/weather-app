@@ -33,28 +33,54 @@ body {
 header, main {
     margin: 0 auto;
     padding: 0 50px;
-
 }
 
+/* FOOTER */
 footer {
-    color: #fcfcfc;
-    font-size: 14px;
-    text-align: center;
-
     background-color: #111111;
 
     margin-top: auto;
     padding: 20px;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-footer span {
-    color: rgb(134, 42, 134);
+footer ul {
+    display: flex;
+}
+
+footer ul li {
+    list-style: none;
+    margin-right: 40px;
+}
+
+footer ul li a {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-end;
+}
+
+footer ul li:hover a {
+    transition: 200ms;
+
+    color: #A49EFF;
+}
+
+footer ul li a img {
+    width: 22px;
+    height: 22px;
+    margin-right: 5px;
 }
 
 /* HEADER */
 header {
     padding: 30px 50px;
-    background-color: rgb(16, 13, 85);
+    background-color: #100d55;
 
     display: flex;
     align-items: center;
