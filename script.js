@@ -176,6 +176,4 @@ document.querySelector('.searchForm').addEventListener('submit', async e => {
     displayDaysForecast(data)
 
     document.querySelector('header div p').innerHTML = `O tempo lá fora está ${data.condition}`
-
-    console.log(data.nextDays)
 })

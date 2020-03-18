@@ -343,8 +343,8 @@ main .now .details {
     font-weight: normal;
 }
 
-/* PORTRAIT */
-@media (max-width: 500px) {
+/* RESPONSIVITY */
+@media only screen and (max-width: 600px) {
     body {
         background: none;
     }
